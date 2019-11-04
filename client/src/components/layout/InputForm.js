@@ -1,9 +1,27 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment, useState } from 'react';
 
 const InputForm = () => {
+  const [formData, setFromData] = useState({
+    date: '',
+    amount: '',
+    litres: '',
+    endkm: ''
+  });
+
+  // Destructure
+  const { date, amount, litres, endkm } = formData;
+
+  const onChange = e =>
+    setFromData({ ...formData, [e.target.name]: e.target.value });
+
+  const onSubmit = e => {
+    e.preventDefault();
+    console.log(formData);
+  };
+
   return (
     <Fragment>
-      <form action='/' method='post'>
+      <form onSubmit={e => onSubmit(e)} className='form'>
         <div className='row m-5'>
           {/* Date */}
           <div className='col-sm p-2'>
@@ -14,9 +32,11 @@ const InputForm = () => {
                 </span>
               </div>
               <input
-                type='date'
+                type='text'
                 className='form-control'
                 name='date'
+                value={date}
+                onChange={e => onChange(e)}
                 required
               />
             </div>
@@ -30,6 +50,8 @@ const InputForm = () => {
               </div>
               <input
                 type='number'
+                value={amount}
+                onChange={e => onChange(e)}
                 step='0.01'
                 className='form-control'
                 name='amount'
@@ -48,6 +70,8 @@ const InputForm = () => {
               </div>
               <input
                 type='number'
+                value={endkm}
+                onChange={e => onChange(e)}
                 className='form-control'
                 name='endkm'
                 required
@@ -65,6 +89,8 @@ const InputForm = () => {
               </div>
               <input
                 type='number'
+                value={litres}
+                onChange={e => onChange(e)}
                 className='form-control'
                 name='litres'
                 required
