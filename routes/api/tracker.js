@@ -6,7 +6,15 @@ const Tracker = require('../../models/Tracker');
 // @route GET api/tracker
 // @desc Get all values
 // @access Public
-router.get('/', (req, res) => res.send('Tracker Route'));
+router.get('/', async (req, res) => {
+  try {
+    const tracker = await Tracker.find();
+    res.json(tracker);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
 
 // @route POST api/tracker
 // @desc Add value to tracker
