@@ -1,5 +1,5 @@
 import React, { Component, Fragment, useState } from 'react';
-
+import axios from 'axios';
 const InputForm = () => {
   const [formData, setFromData] = useState({
     date: '',
@@ -14,9 +14,28 @@ const InputForm = () => {
   const onChange = e =>
     setFromData({ ...formData, [e.target.name]: e.target.value });
 
-  const onSubmit = e => {
+  const onSubmit = async e => {
     e.preventDefault();
     console.log(formData);
+    const newRecord = {
+      date,
+      amount,
+      litres,
+      endkm
+    };
+
+    try {
+      const config = {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      };
+      const body = JSON.stringify(newRecord);
+      const res = await axios.post('/api/tracker', body, config);
+      console.log(res.data);
+    } catch (err) {
+      console.error(err.response.data);
+    }
   };
 
   return (

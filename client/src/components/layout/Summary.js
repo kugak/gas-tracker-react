@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 
-export default class Summary extends Component {
+class Summary extends Component {
   render() {
     return (
       <Fragment>
@@ -49,3 +49,5 @@ export default class Summary extends Component {
     );
   }
 }
+
+export default Summary;
