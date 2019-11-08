@@ -1,12 +1,12 @@
 import React, { Component, Fragment } from 'react';
 import { Consumer } from '../../context';
 
-export default class DataTable extends Component {
+class DataTable extends Component {
   render() {
     return (
       <Consumer>
         {value => {
-          console.log(value);
+          // console.log(value);
 
           const { record_list } = value;
 
@@ -43,3 +43,5 @@ export default class DataTable extends Component {
     );
   }
 }
+
+export default DataTable;
