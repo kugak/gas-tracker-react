@@ -23,7 +23,9 @@
     "config": "^3.2.4",
     "express": "^4.17.1",
     "express-validator": "^6.2.0",
-    "mongoose": "^5.7.7"
+    "mongoose": "^5.7.7",
+    "react-moment": "^0.9.6",
+    "react-number-format": "^4.3.1"
   },
   "devDependencies": {
     "concurrently": "^5.0.0",
