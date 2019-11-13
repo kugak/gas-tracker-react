@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "npm run server | npm run client",
+    "start": "concurrently \"npm run server \" \"npm run client\"",
     "server": "nodemon server",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server \" \"npm run client\""
@@ -25,7 +25,8 @@
     "express-validator": "^6.2.0",
     "mongoose": "^5.7.7",
     "react-moment": "^0.9.6",
-    "react-number-format": "^4.3.1"
+    "react-number-format": "^4.3.1",
+    "concurrently": "^5.0.0"
   },
   "devDependencies": {
     "concurrently": "^5.0.0",
