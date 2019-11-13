@@ -36,7 +36,7 @@ class DataTable extends Component {
                     {record_list.map(item => (
                       <tr key={item._id}>
                         <th scope="row">
-                          <Moment format="ddd MMM DD, YYYY">{item.date}</Moment>
+                          <Moment format="ddd MMM DD">{item.date}</Moment>
                         </th>
                         <td>
                           <NumberFormat
