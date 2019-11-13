@@ -15,17 +15,8 @@ export class Provider extends Component {
     axios
       .get("/api/tracker")
       .then(res => {
-        // console.log(res.data);
         const record_list_arr = res.data;
-        // console.log(record_list_arr);
-        // {
-        //   this.res.data.map(({ amount, endkm, litres }) => console.log(amount));
-        // }
 
-        // var arr = record_list_arr.map(amount => ({
-        //   amount: record_list_arr[amount]
-        // }));
-        // console.log(arr);
         var amount_sum = 0;
         var litres_sum = 0;
         var km_max = 0;
@@ -36,23 +27,20 @@ export class Provider extends Component {
         const month = date.getMonth();
 
         for (var i = 0; i < record_list_arr.length; i++) {
-          // console.log(record_list_arr[i]['amount']);
           amount_sum += record_list_arr[i]["amount"];
           litres_sum += record_list_arr[i]["litres"];
           curr_date = new Date(record_list_arr[i]["date"]);
-          // console.log(month + 1);
-          // console.log(curr_date.getMonth());
+
           if (curr_date.getMonth() === month) {
             month_km_arr.push(record_list_arr[i]["endkm"]);
           }
         }
-        var month_km = month_km_arr[month_km_arr.length - 1] - month_km_arr[0];
+        var month_km = month_km_arr[0] - month_km_arr[month_km_arr.length - 1];
+
+        // var month_km = Math.max(month_km_arr) - Math.min(month_km_arr);
+        console.log(month_km_arr);
         console.log(month_km);
 
-        // console.log("min " + month_min);
-        // console.log("max " + month_max);
-        // console.log(amount_sum);
-        // console.log('sum ' + sum);
         this.setState({
           record_list: res.data,
           amount_sum,

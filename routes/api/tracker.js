@@ -1,18 +1,18 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const { check, validationResult } = require('express-validator');
-const Tracker = require('../../models/Tracker');
+const { check, validationResult } = require("express-validator");
+const Tracker = require("../../models/Tracker");
 
 // @route GET api/tracker
 // @desc Get all values
 // @access Public
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
   try {
-    const tracker = await Tracker.find();
+    const tracker = await Tracker.find().sort({ date: "desc" });
     res.json(tracker);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server Error');
+    res.status(500).send("Server Error");
   }
 });
 
@@ -20,15 +20,15 @@ router.get('/', async (req, res) => {
 // @desc Add value to tracker
 // @access Public
 router.post(
-  '/',
+  "/",
   [
-    check('amount', 'Amount is required')
+    check("amount", "Amount is required")
       .not()
       .isEmpty(),
-    check('litres', 'Litres is required')
+    check("litres", "Litres is required")
       .not()
       .isEmpty(),
-    check('endkm', 'Ending KM is required')
+    check("endkm", "Ending KM is required")
       .not()
       .isEmpty()
   ],
@@ -42,7 +42,7 @@ router.post(
 
     try {
       console.log(req.body);
-      res.send('Added');
+      res.send("Added");
 
       // create tracker instance
       tracker = new Tracker({
@@ -56,7 +56,7 @@ router.post(
       await tracker.save();
     } catch (err) {
       console.error(err.message);
-      res.status(500).send('Server Error');
+      res.status(500).send("Server Error");
     }
   }
 );

@@ -1,11 +1,11 @@
-import React, { Component, Fragment, useState } from 'react';
-import axios from 'axios';
+import React, { Component, Fragment, useState } from "react";
+import axios from "axios";
 const InputForm = () => {
   const [formData, setFromData] = useState({
-    date: '',
-    amount: '',
-    litres: '',
-    endkm: ''
+    date: "",
+    amount: "",
+    litres: "",
+    endkm: ""
   });
 
   // Destructure
@@ -27,11 +27,11 @@ const InputForm = () => {
     try {
       const config = {
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json"
         }
       };
       const body = JSON.stringify(newRecord);
-      const res = await axios.post('/api/tracker', body, config);
+      const res = await axios.post("/api/tracker", body, config);
       console.log(res.data);
     } catch (err) {
       console.error(err.response.data);
@@ -40,20 +40,20 @@ const InputForm = () => {
 
   return (
     <Fragment>
-      <form onSubmit={e => onSubmit(e)} className='form'>
-        <div className='row m-5'>
+      <form onSubmit={e => onSubmit(e)} className="form">
+        <div className="row m-5">
           {/* Date */}
-          <div className='col-sm p-2'>
-            <div className='input-group input-group-lg'>
-              <div className='input-group-prepend'>
-                <span className='input-group-text' id='inputGroup-sizing-lg'>
+          <div className="col-md-4 p-2">
+            <div className="input-group input-group-lg">
+              <div className="input-group-prepend">
+                <span className="input-group-text" id="inputGroup-sizing-lg">
                   Date
                 </span>
               </div>
               <input
-                type='text'
-                className='form-control'
-                name='date'
+                type="date"
+                className="form-control"
+                name="date"
                 value={date}
                 onChange={e => onChange(e)}
                 required
@@ -62,64 +62,64 @@ const InputForm = () => {
           </div>
 
           {/* Amount */}
-          <div className='col-sm p-2'>
-            <div className='input-group input-group-lg'>
-              <div className='input-group-prepend'>
-                <span className='input-group-text'>$</span>
+          <div className="col-md-2 p-2">
+            <div className="input-group input-group-lg">
+              <div className="input-group-prepend">
+                <span className="input-group-text">$</span>
               </div>
               <input
-                type='number'
+                type="number"
                 value={amount}
                 onChange={e => onChange(e)}
-                step='0.01'
-                className='form-control'
-                name='amount'
+                step="0.01"
+                className="form-control"
+                name="amount"
                 required
               />
             </div>
           </div>
 
           {/* End KM */}
-          <div className='col-sm p-2'>
-            <div className='input-group input-group-lg'>
-              <div className='input-group-prepend'>
-                <span className='input-group-text' id='inputGroup-sizing-lg'>
+          <div className="col-sm p-2">
+            <div className="input-group input-group-lg">
+              <div className="input-group-prepend">
+                <span className="input-group-text" id="inputGroup-sizing-lg">
                   End KM
                 </span>
               </div>
               <input
-                type='number'
+                type="number"
                 value={endkm}
                 onChange={e => onChange(e)}
-                className='form-control'
-                name='endkm'
+                className="form-control"
+                name="endkm"
                 required
               />
             </div>
           </div>
 
           {/* Litres */}
-          <div className='col-sm p-2'>
-            <div className='input-group input-group-lg'>
-              <div className='input-group-prepend'>
-                <span className='input-group-text' id='inputGroup-sizing-lg'>
+          <div className="col-sm p-2">
+            <div className="input-group input-group-lg">
+              <div className="input-group-prepend">
+                <span className="input-group-text" id="inputGroup-sizing-lg">
                   Litres
                 </span>
               </div>
               <input
-                type='number'
+                type="number"
                 value={litres}
                 onChange={e => onChange(e)}
-                className='form-control'
-                name='litres'
+                className="form-control"
+                name="litres"
                 required
               />
             </div>
           </div>
 
           <button
-            type='submit'
-            className='btn btn-success btn-lg btn-block mt-3'
+            type="submit"
+            className="btn btn-success btn-lg btn-block mt-3"
           >
             Add Expense
           </button>
