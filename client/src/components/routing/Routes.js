@@ -5,9 +5,11 @@ import App from "../../App";
 const Routes = () => {
   return (
     <div>
-      <Switch>
-        <Route exact path="/" component={App} />
-      </Switch>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={App} />
+        </Switch>
+      </Router>
     </div>
   );
 };

@@ -12,7 +12,9 @@ connectDB();
 app.use(express.json({ extended: false }));
 
 // Index
-app.get("/", (req, res) => res.send("API Running"));
+app.get("/", (req, res) =>
+  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"))
+);
 
 // Define Routes
 app.use("/api/tracker", require("./routes/api/tracker"));
